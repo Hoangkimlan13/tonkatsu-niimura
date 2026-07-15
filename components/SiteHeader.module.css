@@ -1,0 +1,499 @@
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background-color: rgba(250, 246, 238, 0.85);
+  border-bottom: 1px solid rgba(197, 155, 79, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.headerScrolled {
+  background-color: rgba(250, 246, 238, 0.98);
+  box-shadow: 0 12px 40px rgba(23, 61, 53, 0.03);
+  border-bottom-color: rgba(197, 155, 79, 0.2);
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  height: 90px;
+  max-width: 1440px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.headerScrolled .container {
+  height: 74px;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+}
+
+.logoWrapper {
+  position: relative;
+  height: 48px;
+  width: 130px;
+  transition: transform 0.3s ease;
+}
+
+.logoImage {
+  object-fit: contain;
+  filter: invert(1) brightness(0.12);
+}
+
+/* ================= NAV DESKTOP ================= */
+.desktopNav {
+  display: none;
+}
+
+.navLink {
+  position: relative;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #1a1a1a;
+  padding: 10px 0;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: #c59b4f;
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 1.5px;
+  width: 0;
+  background-color: #c59b4f;
+  transform: translateX(-50%);
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* ================= ACTIONS RIGHT ================= */
+.rightActions {
+  display: none;
+  align-items: center;
+  gap: 20px;
+}
+
+/* --- Lang Button Tinh Chỉnh --- */
+.langContainer {
+  position: relative;
+}
+
+.customLangBtn {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(197, 155, 79, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 30px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.langLabelText {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 6px 0 8px; /* Giúp giãn cách chữ và icon đều đặn */
+}
+
+.customLangBtn:hover, .customLangBtnActive {
+  color: #c59b4f;
+  background-color: #ffffff;
+  border-color: #c59b4f;
+  box-shadow: 0 4px 12px rgba(197, 155, 79, 0.1);
+}
+
+.langIcon {
+  width: 15px;
+  height: 15px;
+}
+
+.chevronIcon {
+  width: 10px;
+  height: 10px;
+  opacity: 0.5;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.chevronIconRotated {
+  transform: rotate(180deg);
+  opacity: 0.9;
+  color: #c59b4f;
+}
+
+.langDropdownList {
+  position: absolute;
+  top: 135%;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid rgba(197, 155, 79, 0.15);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  min-width: 140px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(23, 61, 53, 0.08);
+  animation: fadeInDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.langDropdownItem {
+  background: transparent;
+  border: none;
+  padding: 9px 12px;
+  text-align: left;
+  font-size: 0.8rem;
+  color: #444444;
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.bulletActive {
+  display: inline-block;
+  color: transparent;
+}
+
+.langDropdownItem:hover {
+  background-color: rgba(197, 155, 79, 0.05);
+  color: #c59b4f;
+}
+
+.langActive {
+  background-color: rgba(197, 155, 79, 0.08) !important;
+  color: #c59b4f;
+  font-weight: 600;
+}
+
+.langActive .bulletActive {
+  color: #c59b4f;
+}
+
+/* ================= LUXURY BUTTONS ================= */
+.btnDelivery, .btnReservation {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px; 
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btnDelivery {
+  padding: 0 16px;
+  height: 40px;
+  background-color: transparent;
+  color: #111111;
+  border: 1px solid rgba(17, 17, 17, 0.25);
+}
+
+.btnDelivery:hover {
+  color: #c59b4f;
+  border-color: #c59b4f;
+  transform: translateY(-1px);
+}
+
+.btnReservation {
+  padding: 0 22px;            
+  font-size: 0.78rem;        
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  height: 40px;              
+  background-color: #11342b;
+  color: #faf6ee;
+  border: 1px solid #11342b;
+}
+
+.btnReservation:hover {
+  background-color: #c59b4f;
+  border-color: #c59b4f;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(197, 155, 79, 0.15);
+}
+
+.deliveryContent {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.deliveryIconWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.deliveryTextGoup {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.textTakeout {
+  font-size: 0.5rem;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.textDelivery {
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+/* ================= CONTROLS MOBILE ================= */
+.mobileControls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btnMobileReserve {
+  background-color: #11342b;
+  color: #faf6ee;
+  padding: 8px 18px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 26px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburgerLine {
+  display: block;
+  width: 26px;
+  height: 1.5px;
+  background-color: #111111;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hamburgerActive .hamburgerLine:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.hamburgerActive .hamburgerLine:nth-child(2) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* ================= MOBILE MENU ================= */
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: calc(100vh - 100%);
+  overflow-y: auto;
+  background-color: #faf6ee;
+  border-bottom: 1px solid rgba(23, 61, 53, 0.08);
+  padding: 32px 24px 48px 24px;
+  box-shadow: 0 20px 50px rgba(23, 61, 53, 0.12);
+  
+  animation: fadeInDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mobileMenuContainer {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.mobileFeaturedActions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.featuredActionBtn {
+  display: flex;
+  align-items: center;      
+  justify-content: center;   
+  height: 46px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 30px;
+  gap: 8px;                 
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #11342b;
+  border: 1px solid rgba(197, 155, 79, 0.25);
+  box-shadow: 0 4px 12px rgba(23, 61, 53, 0.03);
+  opacity: 0; /* Để ẩn đi trước khi animation chạy */
+  animation: fadeInUpItem 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.featuredActionBtn:active {
+  background-color: #ffffff;
+  border-color: #c59b4f;
+  color: #c59b4f;
+  box-shadow: 0 6px 16px rgba(197, 155, 79, 0.1);
+}
+
+
+.mobileLinksGrid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 8px 0;
+}
+
+.mobileNavLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Đẩy chữ sang trái, mũi tên sang phải tuyệt đối */
+  width: 100%;
+  padding: 16px 4px; /* Tăng diện tích bấm giúp trải nghiệm mượt mà hơn */
+  color: #1a1a1a;
+  text-decoration: none;
+  /* Tạo đường gạch chân mờ, tinh tế giao thoa giữa các hàng */
+  border-bottom: 1px solid rgba(197, 155, 79, 0.12); 
+  opacity: 0;
+  animation: fadeInUpItem 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: all 0.2s ease;
+}
+
+.mobileNavLink:active {
+  background-color: rgba(197, 155, 79, 0.06); /* Nền hắt nhẹ màu vàng ấm */
+  padding-left: 12px; /* Chữ dịch nhẹ sang phải tạo hiệu ứng phản hồi động */
+  color: #c59b4f; /* Đổi chữ sang màu vàng đồng sang trọng */
+}
+
+.mobileNavLink:active .mobileNavArrow {
+  color: #c59b4f;
+  opacity: 1; 
+  transform: translateX(4px); 
+}
+
+.mobileNavLabel {
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.mobileNavArrow {
+  width: 16px;
+  height: 16px;
+  color: #11342b;
+  opacity: 0.4;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.mobileLinksGrid .mobileNavLink:last-child {
+  border-bottom: none;
+}
+
+.mobileMenuFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-top: 1px solid rgba(197, 155, 79, 0.12);
+  padding-top: 24px; 
+}
+
+.menuInDeliveryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  /* Thay vì một ô màu trắng thô, ta dùng một lớp nền mịn hòa vào màu kem của background */
+  background-color: rgba(23, 61, 53, 0.04); 
+  border: 1px solid rgba(197, 155, 79, 0.2);
+  border-radius: 100px; /* Bo tròn tuyệt đối viên thuốc */
+  padding: 0 24px;
+  color: #11342b;
+  transition: all 0.25s ease;
+}
+
+.menuInDeliveryBtn:active {
+  background-color: rgba(197, 155, 79, 0.1);
+  border-color: #c59b4f;
+}
+
+/* SEGMENTED CONTROL MOBILE */
+.mobileLangSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.mobileLangTrack {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: rgba(23, 61, 53, 0.05);
+  padding: 4px;
+  border-radius: 30px;
+  width: 100%;
+}
+
+.mobileLangTab {
+  background: transparent;
+  border: none;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #555555;
+  padding: 8px 0;
+  text-align: center;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.mobileLangTabActive {
+  color: #ffffff !important;
+  font-weight: 600;
+  background-color: #11342b;
+}
+
+/* RESPONSIVE */
+@media (min-width: 1200px) {
+  .desktopNav { display: flex; align-items: center; gap: 36px; }
+  .rightActions { display: flex; }
+  .mobileControls { display: none; }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .container { padding: 0 32px; }
+  .rightActions { display: flex; }
+  .mobileControls { display: flex; }
+  .mobileControls .btnMobileReserve { display: none; }
+}
+
+@media (max-width: 767px) {
+  .container { padding: 0 20px; height: 74px; }
+  .logoWrapper { height: 40px; width: 110px; }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUpItem {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
