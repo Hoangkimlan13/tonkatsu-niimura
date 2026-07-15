@@ -4,11 +4,11 @@ import Hero from "@/components/home/Hero";
 import BrandStory from "@/components/home/BrandStory";
 import MenuPreview from "@/components/home/MenuPreview";
 import StoreStrip from "@/components/home/StoreStrip";
-import Reviews from "@/components/home/Reviews"; // Import component mới
+import Reviews from "@/components/home/Reviews"; 
 import NewsList from "@/components/home/NewsList";
 import ReservationPanel from "@/components/home/ReservationPanel";
 import SiteFooter from "@/components/SiteFooter";
-import { extendedSitemap, menuPreviewItems, news, stores } from "../data"; // Chỉnh lại đường dẫn lùi 1 cấp nếu cần
+import { menuPreviewItems, news, stores } from "../data"; // Chỉnh lại đường dẫn lùi 1 cấp nếu cần
 import type { Locale } from "../i18n";
 
 interface Props {

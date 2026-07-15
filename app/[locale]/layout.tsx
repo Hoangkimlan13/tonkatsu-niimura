@@ -19,16 +19,23 @@ export const viewport: Viewport = {
   userScalable: false,
 };
 
+type Params = Promise<{ locale: Locale }>;
+
 interface RootLayoutProps {
   children: React.ReactNode;
-  params: Promise<{ locale: Locale }>;
+  // Next.js yêu cầu kiểu Promise<{ [key: string]: string }> cho params
+  params: Promise<{ locale: string }>; 
 }
 
 export default async function RootLayout({ children, params }: RootLayoutProps) {
+  // Chờ lấy locale
   const { locale } = await params;
 
+  // Ép kiểu locale sang kiểu Locale của bạn để dùng trong code
+  const currentLocale = locale as Locale;
+
   return (
-    <html lang={locale}>
+    <html lang={currentLocale}>
       <head>
         <link
           rel="stylesheet"
@@ -36,7 +43,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
         />
       </head>
       <body>
-        <SiteHeader locale={locale} />
+        <SiteHeader locale={currentLocale} />
         <main>{children}</main>
       </body>
     </html>
