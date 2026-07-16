@@ -184,7 +184,7 @@ export default function SiteFooter({ locale }: SiteFooterProps) {
         {/* Khối pháp lý dưới cùng */}
         <div className={styles.bottomSection}>
           <p className={styles.copyright}>
-            © 2026 とんかつ にいむら (Niimura Tonkatsu). All rights reserved.
+            © 2026 とんかつ にいむら (Tonkatsu Niimura). All rights reserved.
           </p>
           <div className={styles.subLinks}>
             <a href={localizePath("/terms", locale)} className={styles.subLinkItem}>

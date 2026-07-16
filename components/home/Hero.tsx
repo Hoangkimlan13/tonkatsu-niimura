@@ -222,9 +222,9 @@ export default function Hero() {
             </svg>
           </button>
           
-          <button className={`${styles.lightboxBtn} ${styles.lightboxLeft}`} onClick={(e) => handlePrev(e)}>
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75">
-              <path d="M15 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round"/>
+          <button className={styles.closeLightbox} onClick={(e) => { e.stopPropagation(); setIsLightboxOpen(false); }}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
 
@@ -238,8 +238,8 @@ export default function Hero() {
             />
           </div>
 
-          <button className={`${styles.lightboxBtn} ${styles.lightboxRight}`} onClick={(e) => handleNext(e)}>
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75">
+          <button className={`${styles.lightboxBtn} ${styles.lightboxRight} ${styles.desktopOnly}`} onClick={(e) => handleNext(e)}>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
               <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>

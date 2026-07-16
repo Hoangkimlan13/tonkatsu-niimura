@@ -48,7 +48,8 @@ export const dictionary = {
     siteName: "にいむら",
     delivery: "テイクアウト",
     deliveryAlt: "デリバリー",
-    reservation: "予約",
+    reservation: "予約する",
+    phoneReservation: "電話予約", // Thêm dòng này
     menu: "メニュー",
     store: "店舗案内",
     about: "こだわり",
@@ -68,6 +69,7 @@ export const dictionary = {
     delivery: "Takeout",
     deliveryAlt: "Delivery",
     reservation: "Reserve",
+    phoneReservation: "Call to Book", // Thêm dòng này
     menu: "Menu",
     store: "Stores",
     about: "About",
@@ -87,6 +89,7 @@ export const dictionary = {
     delivery: "Mang về",
     deliveryAlt: "Giao hàng",
     reservation: "Đặt bàn",
+    phoneReservation: "Đặt qua ĐT", // Thêm dòng này
     menu: "Thực đơn",
     store: "Cửa hàng",
     about: "Câu chuyện",
@@ -106,6 +109,7 @@ export const dictionary = {
     delivery: "外带",
     deliveryAlt: "外送",
     reservation: "预约",
+    phoneReservation: "电话预约", // Thêm dòng này
     menu: "菜单",
     store: "门店",
     about: "品牌故事",
@@ -125,6 +129,7 @@ export const dictionary = {
     delivery: "포장",
     deliveryAlt: "배달",
     reservation: "예약",
+    phoneReservation: "전화 예약", // Thêm dòng này
     menu: "메뉴",
     store: "매장",
     about: "브랜드 스토리",

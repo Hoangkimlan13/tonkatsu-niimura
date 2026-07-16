@@ -165,13 +165,64 @@
 /* ================= LIGHTBOX Fullscreen ================= */
 .lightboxOverlay {
   position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  background-color: #090807; z-index: 99999;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  top: 0; 
+  left: 0; 
+  width: 100vw; 
+  height: 100vh;
+  
+  /* Tạo nền đen sâu, không xuyên thấu */
+  background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+  
+  z-index: 99999;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center;
+  overscroll-behavior: contain;
 }
-.lightboxImageContainer { position: relative; width: 78vw; height: 72vh; }
-.lightboxMainImage { object-fit: contain; }
-.closeLightbox { position: absolute; top: 40px; right: 40px; background: none; border: none; color: rgba(255, 255, 255, 0.4); cursor: pointer; z-index: 100001; }
+
+.lightboxImageContainer { 
+  position: relative; 
+  width: 90vw; 
+  height: 60vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Thêm đổ bóng để ảnh nổi khối */
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5));
+}
+
+.lightboxMainImage { 
+  object-fit: contain;
+  /* Thêm viền mỏng để ảnh tách biệt với nền đen */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.closeLightbox {
+  position: absolute;
+  top: 30px; 
+  right: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  z-index: 100002;
+  transition: all 0.3s ease;
+}
+
+.closeLightbox:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: rotate(90deg) scale(1.1); /* Thêm hiệu ứng xoay nhẹ khi hover */
+}
+
+
 .lightboxBtn { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: rgba(255, 255, 255, 0.4); cursor: pointer; padding: 40px 24px; z-index: 100000; transition: color 0.3s; }
 .lightboxBtn:hover { color: #d4af37; }
 .lightboxLeft { left: 2%; } .lightboxRight { right: 2%; }
@@ -200,4 +251,7 @@
   .lightboxLeft { left: 0px; }
   .lightboxRight { right: 0px; }
   .closeLightbox { top: 24px; right: 24px; }
+  .desktopOnly {
+    display: none !important;
+  }
 }

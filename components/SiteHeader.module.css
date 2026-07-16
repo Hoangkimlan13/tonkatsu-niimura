@@ -191,7 +191,7 @@
 }
 
 /* ================= LUXURY BUTTONS ================= */
-.btnDelivery, .btnReservation {
+.btnPhone, .btnReservation {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -199,18 +199,24 @@
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btnDelivery {
-  padding: 0 16px;
-  height: 40px;
-  background-color: transparent;
-  color: #111111;
-  border: 1px solid rgba(17, 17, 17, 0.25);
+.btnPhone {
+  padding: 0 22px;            
+  font-size: 0.78rem;        
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  height: 40px;              
+  background-color: var(--gold, #b88a44);
+  color: #faf6ee;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); 
 }
 
-.btnDelivery:hover {
-  color: #c59b4f;
-  border-color: #c59b4f;
-  transform: translateY(-1px);
+.btnPhone:hover {
+  background-color: transparent;
+  color: #11342b; 
+  border: 1px solid #11342b;
+  border-color: #11342b;
+  transform: translateY(-2px);
 }
 
 .btnReservation {
@@ -222,58 +228,107 @@
   background-color: #11342b;
   color: #faf6ee;
   border: 1px solid #11342b;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 .btnReservation:hover {
+  background-color: #c59b4f; /* Chuyển sang vàng đồng của thương hiệu */
+  color: #ffffff; /* Chữ trắng sáng cho nổi bật trên nền vàng */
+  border-color: #c59b4f; /* Viền cùng màu nền */
+  transform: translateY(-2px); /* Nút nổi lên nhẹ */
+  box-shadow: 0 8px 20px rgba(197, 155, 79, 0.3); /* Đổ bóng sang trọng */
+}
+
+.btnReservation:active {
+  transform: translateY(0); /* Nút "ấn" xuống khi click */
+  box-shadow: 0 2px 10px rgba(197, 155, 79, 0.2);
+}
+
+.deliveryTextGroup {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.textDivider {
+  opacity: 0.5;
+  font-weight: 300;
+}
+.menuInDeliveryBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  background-color: #11342b;
+  color: #fff;
+  border-radius: 12px; /* Bo góc mềm mại hơn */
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Tạo chiều sâu */
+  border: 1px solid rgba(197, 155, 79, 0.3);
+  box-shadow: 0 4px 12px rgba(17, 52, 43, 0.15);
+}
+
+.menuInDeliveryBtn::before {
+  content: 'delivery_dining';
+  font-family: 'Material Symbols Outlined';
+  margin-right: 10px;
+  font-size: 24px;
+  opacity: 0.9;
+}
+
+/* Thêm hiệu ứng hover/active rõ ràng hơn */
+.menuInDeliveryBtn:active {
   background-color: #c59b4f;
-  border-color: #c59b4f;
-  color: #ffffff;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(197, 155, 79, 0.15);
-}
-
-.deliveryContent {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.deliveryIconWrapper {
-  display: flex;
-  align-items: center;
-}
-
-.deliveryTextGoup {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-}
-
-.textTakeout {
-  font-size: 0.5rem;
-  font-weight: 500;
-  opacity: 0.7;
-}
-
-.textDelivery {
-  font-size: 0.7rem;
-  font-weight: 700;
+  color: #11342b;
+  transform: translateY(2px); /* Hiệu ứng nhấn xuống */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* ================= CONTROLS MOBILE ================= */
 .mobileControls {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 0; 
+}
+
+
+.topActionButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.btnMobilePhone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: var(--gold, #b88a44); 
+  color: #faf6ee;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 12px;
+  border-radius: 8px;
+  text-decoration: none;
 }
 
 .btnMobileReserve {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #11342b;
   color: #faf6ee;
-  padding: 8px 18px;
-  font-size: 0.75rem;
   font-weight: 600;
-  border-radius: 4px;
+  font-size: 0.85rem;
+  padding: 12px;
+  border-radius: 8px;
+  text-decoration: none;
 }
 
 .hamburger {
@@ -367,16 +422,26 @@
 .mobileNavLink {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Đẩy chữ sang trái, mũi tên sang phải tuyệt đối */
+  justify-content: space-between;
   width: 100%;
-  padding: 16px 4px; /* Tăng diện tích bấm giúp trải nghiệm mượt mà hơn */
-  color: #1a1a1a;
+  padding: 18px 4px;
+  color: #11342b;
   text-decoration: none;
-  /* Tạo đường gạch chân mờ, tinh tế giao thoa giữa các hàng */
-  border-bottom: 1px solid rgba(197, 155, 79, 0.12); 
-  opacity: 0;
-  animation: fadeInUpItem 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(197, 155, 79, 0.15);
+  transition: all 0.3s ease;
+}
+
+.mobileNavLinkInner {
+  display: flex;
+  align-items: center;
+}
+
+/* Thêm icon vào nút Delivery cho đồng bộ */
+.menuInDeliveryBtn::before {
+  content: 'delivery_dining';
+  font-family: 'Material Symbols Outlined';
+  margin-right: 8px;
+  font-size: 20px;
 }
 
 .mobileNavLink:active {
@@ -414,7 +479,6 @@
   flex-direction: column;
   gap: 24px;
   border-top: 1px solid rgba(197, 155, 79, 0.12);
-  padding-top: 24px; 
 }
 
 .menuInDeliveryBtn {
@@ -445,29 +509,127 @@
 
 .mobileLangTrack {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr); 
   background-color: rgba(23, 61, 53, 0.05);
   padding: 4px;
   border-radius: 30px;
   width: 100%;
+  box-shadow: 0 4px 12px #11342b26;
 }
 
 .mobileLangTab {
   background: transparent;
   border: none;
-  font-size: 0.78rem;
+  font-size: 0.70rem; 
   font-weight: 500;
   color: #555555;
-  padding: 8px 0;
+  padding: 8px 4px;
   text-align: center;
   border-radius: 20px;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  white-space: nowrap; /* Ngăn không cho chữ xuống dòng */
 }
 
 .mobileLangTabActive {
   color: #ffffff !important;
   font-weight: 600;
   background-color: #11342b;
+  box-shadow: 0 4px 10px rgba(17, 52, 43, 0.2); 
+}
+
+
+.mobileBrandIntro {
+  color: #8c734b;
+  font-size: 1rem;
+  text-align: center;
+  margin: 30px 20px 20px;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  font-weight: 500;
+  
+  /* Tạo không gian cho gạch chân */
+  padding-bottom: 12px;
+  position: relative;
+}
+
+/* Tạo gạch chân bằng pseudo-element */
+.mobileBrandIntro::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Căn giữa */
+  transform: translateX(-50%); /* Căn giữa tuyệt đối */
+  width: 60px; /* Độ dài gạch chân - bạn có thể chỉnh số này (ví dụ: 40px, 80px) */
+  height: 2px;
+  background-color: #8c734b;
+  border-radius: 2px; /* Bo tròn đầu gạch chân cho sang trọng */
+}
+
+.socialWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  padding: 10px 0 40px;
+}
+
+.iconLink {
+  color: #8c734b; /* Đồng bộ màu với chữ */
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.1)); /* Thêm bóng đổ siêu nhẹ tạo chiều sâu */
+}
+
+.iconLink:active {
+  transform: translateY(-4px) scale(1.05); /* Hiệu ứng nhấn mượt mà hơn */
+  color: #5d4a2d; /* Màu đậm hơn khi chạm vào */
+}
+
+.svgIcon {
+  width: 26px; 
+  height: 26px;
+}
+
+
+/* Tăng độ sang trọng cho câu giới thiệu */
+.mobileBrandIntro {
+  color: #8c734b;
+  font-size: 0.75rem;
+  text-align: center;
+  margin: 30px 20px 20px;
+  letter-spacing: 0.1em;
+  font-weight: 300;
+  border-top: 1px solid rgba(140, 115, 75, 0.2);
+  padding-top: 20px;
+}
+
+/* Đảm bảo các icon cùng màu vàng đồng sang trọng */
+.monochromeIcon {
+  color: #8c734b !important;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.monochromeIcon:hover {
+  opacity: 1;
+}
+
+/* Style cho phần Copyright */
+.copyright {
+  color: #a8a8a8;
+  font-size: 0.65rem;
+  text-align: center;
+  letter-spacing: 0.05em;
+  font-family: sans-serif;
+}
+
+.socialWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 10px 0 20px;
 }
 
 /* RESPONSIVE */
@@ -480,8 +642,16 @@
 @media (min-width: 768px) and (max-width: 1199px) {
   .container { padding: 0 32px; }
   .rightActions { display: flex; }
-  .mobileControls { display: flex; }
+  .mobileControls { display: flex; gap: 0;}
   .mobileControls .btnMobileReserve { display: none; }
+  .tabletDesktopActions {
+    display: flex;
+    gap: 15px;
+  }
+  .topActionButtons {
+    display: none !important;
+  }
+  
 }
 
 @media (max-width: 767px) {
