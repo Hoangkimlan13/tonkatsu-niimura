@@ -181,16 +181,18 @@
   overscroll-behavior: contain;
 }
 
-.lightboxImageContainer { 
-  position: relative; 
-  width: 90vw; 
-  height: 60vh; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  /* Thêm đổ bóng để ảnh nổi khối */
-  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5));
+.lightboxImageContainer{
+    position:relative;
+    width:90vw;
+    height:60vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    filter:drop-shadow(0 20px 30px rgba(0,0,0,.5));
+
+    touch-action:pan-x;
 }
 
 .lightboxMainImage { 
@@ -199,29 +201,47 @@
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.closeLightbox {
-  position: absolute;
-  top: 30px; 
-  right: 30px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  cursor: pointer;
-  z-index: 100002;
-  transition: all 0.3s ease;
+.closeLightbox{
+  position:absolute;
+
+  top:18px;
+  right:18px;
+
+  width:60px;
+  height:60px;
+
+  border:none;
+  border-radius:999px;
+
+  background:rgba(0,0,0,.55);
+
+  backdrop-filter:blur(12px);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#fff;
+
+  cursor:pointer;
+
+  z-index:100002;
+
+  transition:.25s;
+
+  touch-action:manipulation;
+
+  -webkit-tap-highlight-color:transparent;
 }
 
-.closeLightbox:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: rotate(90deg) scale(1.1); /* Thêm hiệu ứng xoay nhẹ khi hover */
+.closeLightbox:hover{
+  background:rgba(255,255,255,.18);
 }
 
+.closeLightbox svg{
+  width:28px;
+  height:28px;
+}
 
 .lightboxBtn { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: rgba(255, 255, 255, 0.4); cursor: pointer; padding: 40px 24px; z-index: 100000; transition: color 0.3s; }
 .lightboxBtn:hover { color: #d4af37; }

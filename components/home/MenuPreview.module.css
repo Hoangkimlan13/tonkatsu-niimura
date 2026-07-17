@@ -55,10 +55,11 @@
   display: flex;
   gap: 48px;
   overflow-x: auto;
-  padding: 40px calc(50vw - 180px); 
-  scrollbar-width: none; 
+  padding: 60px calc(50vw - 195px); /* Tính toán để card giữa nằm chính giữa */
+  scrollbar-width: none;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  background-color: var(--rice, #fffdf7); /* Giữ màu nền cũ */
 }
 
 .menuPreviewSlider::-webkit-scrollbar {
@@ -72,26 +73,30 @@
   flex-direction: column;
   text-decoration: none;
   color: inherit;
-  background-color: transparent;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease;
-  opacity: 0.35;
-  transform: scale(0.9);
+  background-color: #fff; /* Nền trắng sạch */
+  padding: 16px;          /* Thêm khoảng thở bên trong card */
+  border-radius: 12px;    /* Bo góc vừa phải (không quá lớn) */
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  opacity: 0.6;           /* Mờ nhẹ các card xung quanh */
+  transform: scale(0.95);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Shadow cực kỳ nhẹ */
   cursor: pointer;
 }
 
+
 .activeCard {
   opacity: 1;
-  transform: scale(1.04);
-  cursor: pointer;
+  transform: scale(1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12); /* Shadow "nổi" khi active */
 }
+
 
 .imageWrapper {
   width: 100%;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background-color: #eae3d5;
-  margin-bottom: 24px;
-  box-shadow: 0 16px 40px rgba(23, 19, 15, 0.04);
+  border-radius: 8px; /* Bo góc ảnh đồng bộ */
+  margin-bottom: 20px;
 }
 
 .menuImage {
@@ -99,6 +104,15 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.previewCard:hover {
+  transform: translateY(-8px) scale(1.02); /* Nhấc card lên nhẹ */
+  box-shadow: 0 25px 50px rgba(184, 138, 68, 0.15); /* Shadow màu vàng đồng nhẹ */
+}
+
+.previewCard:hover .menuImage {
+  transform: scale(1.08); /* Zoom nhẹ ảnh */
 }
 
 .cardInfo {
@@ -110,10 +124,10 @@
 
 .title {
   font-family: "Noto Serif JP", serif;
+  font-size: 1.35rem; /* Tăng size chút xíu */
   font-weight: 600;
-  font-size: 1.25rem;
   color: var(--foreground, #17130f);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.05em;
 }
 
 .pricesBlock {
@@ -159,10 +173,6 @@
   font-size: 1.05rem;
   color: #8a8175;
   font-weight: 500;
-}
-
-.previewCard:hover .menuImage {
-  transform: scale(1.03);
 }
 
 /* ----------------------------------------- */

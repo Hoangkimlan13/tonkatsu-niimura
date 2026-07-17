@@ -24,8 +24,12 @@ export default function Hero() {
   const [isTransitioning, setIsTransitioning] = useState(true);
 
   const trackRef = useRef<HTMLDivElement | null>(null);
-  const touchStartX = useRef<number>(0);
-  const touchEndX = useRef<number>(0);
+
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  // thêm dòng này
+  const isSwiping = useRef(false);
 
   const realIndex = currentSlide % baseImages.length;
 
@@ -112,13 +116,42 @@ export default function Hero() {
   }, [currentSlide, isTransitioning]);
 
   // Hỗ trợ vuốt tay cho màn hình cảm ứng di động
-  const handleTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.targetTouches[0].clientX; };
-  const handleTouchMove = (e: React.TouchEvent) => { touchEndX.current = e.targetTouches[0].clientX; };
-  const handleTouchEnd = () => {
-    const distance = touchStartX.current - touchEndX.current;
-    if (distance > 50) handleNext();
-    else if (distance < -50) handlePrev();
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+    touchEndX.current = touchStartX.current;
+    isSwiping.current = false;
   };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+
+    const move = Math.abs(
+      touchEndX.current - touchStartX.current
+    );
+
+    if (move > 15) {
+      isSwiping.current = true;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (!isSwiping.current) return;
+
+    const distance =
+      touchStartX.current - touchEndX.current;
+
+    if (distance > 80) {
+      handleNext();
+    } else if (distance < -80) {
+      handlePrev();
+    }
+
+    setTimeout(() => {
+      isSwiping.current = false;
+    }, 30);
+  };
+
+
 
   return (
     <>
@@ -127,7 +160,11 @@ export default function Hero() {
           {/* CINEMATIC SLIDER */}
           <div 
             className={styles.sliderContainer} 
-            onClick={() => setIsLightboxOpen(true)}
+            onClick={() => {
+              if (!isSwiping.current) {
+                setIsLightboxOpen(true);
+              }
+            }}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
@@ -209,26 +246,44 @@ export default function Hero() {
 
       {/* LUXURY LIGHTBOX MODE */}
       {isLightboxOpen && (
-        <div 
-          className={styles.lightboxOverlay} 
+        <div
+          className={styles.lightboxOverlay}
           onClick={() => setIsLightboxOpen(false)}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
         >
-          <button className={styles.closeLightbox} onClick={() => setIsLightboxOpen(false)}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-              <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-          
+         
           <button className={styles.closeLightbox} onClick={(e) => { e.stopPropagation(); setIsLightboxOpen(false); }}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
 
-          <div className={styles.lightboxImageContainer} onClick={(e) => e.stopPropagation()}>
+          <button
+            className={`${styles.lightboxBtn} ${styles.lightboxLeft} ${styles.desktopOnly}`}
+            onClick={(e) => handlePrev(e)}
+          >
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1"
+            >
+              <path
+                d="M15 19l-7-7 7-7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+
+          <div
+            className={styles.lightboxImageContainer}
+            onClick={(e) => e.stopPropagation()}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <Image
               src={baseImages[realIndex].src}
               alt={baseImages[realIndex].alt}

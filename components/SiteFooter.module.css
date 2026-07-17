@@ -58,8 +58,8 @@
 }
 
 .svgIcon {
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
